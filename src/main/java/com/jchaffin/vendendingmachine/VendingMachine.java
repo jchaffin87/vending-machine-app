@@ -1,6 +1,10 @@
 package com.jchaffin.vendendingmachine;
 
+import java.util.ArrayList;
+
 public class VendingMachine {
+
+	ArrayList<Coin> coinHold = new ArrayList<Coin>();
 
 	public String idCoin(Coin coin) {
 		if (coin.getSize() == 4 && coin.getWeight() == 4) {
@@ -16,6 +20,10 @@ public class VendingMachine {
 			return "dime";
 		}
 		return "";
+	}
+
+	public void acceptCoin(Coin coin) {
+		coinHold.add(coin);
 	}
 
 }
