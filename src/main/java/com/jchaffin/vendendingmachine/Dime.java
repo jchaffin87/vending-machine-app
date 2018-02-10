@@ -1,9 +1,9 @@
 package com.jchaffin.vendendingmachine;
 
-public class Nickle implements Coin {
+public class Dime implements Coin {
 
-	private int weight = 3;
-	private int size = 3;
+	private int weight = 1;
+	private int size = 1;
 
 	@Override
 	public void setWeight(int weight) {

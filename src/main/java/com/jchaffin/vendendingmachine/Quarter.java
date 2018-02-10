@@ -2,8 +2,8 @@ package com.jchaffin.vendendingmachine;
 
 public class Quarter implements Coin {
 
-	int weight = 4;
-	int size = 4;
+	private int weight = 4;
+	private int size = 4;
 
 	@Override
 	public void setWeight(int weight) {
