@@ -23,7 +23,11 @@ public class VendingMachine {
 	}
 
 	public void acceptCoin(Coin coin) {
-		coinHold.add(coin);
+		String coinType = idCoin(coin);
+
+		if (coinType.equals("quarter")) {
+			coinHold.add(coin);
+		}
 	}
 
 }
