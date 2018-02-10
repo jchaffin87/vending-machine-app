@@ -27,10 +27,12 @@ public class VendingMachine {
 
 		if (coinType.equals("quarter")) {
 			coinHold.add(coin);
-		}
-		if (coinType.equals("nickel")) {
+		} else if (coinType.equals("nickel")) {
+			coinHold.add(coin);
+		} else if (coinType.equals("dime")) {
 			coinHold.add(coin);
 		}
+
 	}
 
 }

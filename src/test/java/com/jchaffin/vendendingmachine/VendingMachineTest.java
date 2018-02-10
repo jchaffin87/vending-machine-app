@@ -66,4 +66,14 @@ public class VendingMachineTest {
 		assertEquals(false, underTest.coinHold.contains(newPenny));
 	}
 
+	@Test
+	public void acceptCoinPutsCoinInHoldIfItIsADime() {
+		Dime newDime = new Dime();
+		underTest.acceptCoin(newDime);
+		Penny newPenny = new Penny();
+		underTest.acceptCoin(newPenny);
+		assertEquals(true, underTest.coinHold.contains(newDime));
+		assertEquals(false, underTest.coinHold.contains(newPenny));
+	}
+
 }
