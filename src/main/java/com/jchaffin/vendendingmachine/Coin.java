@@ -1,29 +1,13 @@
 package com.jchaffin.vendendingmachine;
 
-public class Coin {
+public interface Coin {
 
-	private int weight;
-	private int size;
+	public void setWeight(int weight);
 
-	public Coin(int weight, int size) {
-		this.setWeight(weight);
-		this.setSize(size);
-	}
+	public int getWeight();
 
-	public int getWeight() {
-		return weight;
-	}
+	public void setSize(int size);
 
-	public void setWeight(int weight) {
-		this.weight = weight;
-	}
-
-	public int getSize() {
-		return size;
-	}
-
-	public void setSize(int size) {
-		this.size = size;
-	}
+	public int getSize();
 
 }
