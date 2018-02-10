@@ -14,6 +14,7 @@ public class VendingMachineTest {
 		underTest = new VendingMachine();
 	}
 
+	// Tests for idCoin method:
 	@Test
 	public void whenIdCoinIsPassedAQuarterItReturnsQuarter() {
 		Quarter newQuarter = new Quarter();
@@ -30,6 +31,12 @@ public class VendingMachineTest {
 	public void whenIdCoinIsPassedADimeItReturnsDime() {
 		Dime newDime = new Dime();
 		assertEquals("dime", underTest.idCoin(newDime));
+	}
+
+	@Test
+	public void whenIdCoinIsPassedAPennyItReturnsPenny() {
+		Penny newPenny = new Penny();
+		assertEquals("penny", underTest.idCoin(newPenny));
 	}
 
 }
