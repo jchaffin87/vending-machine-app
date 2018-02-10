@@ -11,7 +11,13 @@ public class VendingMachineTest {
 		VendingMachine underTest = new VendingMachine();
 		Quarter newQuarter = new Quarter();
 		assertEquals("quarter", underTest.idCoin(newQuarter));
+	}
 
+	@Test
+	public void whenIdCoinIsPassedANickleItReturnsNickle() {
+		VendingMachine underTest = new VendingMachine();
+		Nickle newNickle = new Nickle();
+		assertEquals("nickle", underTest.idCoin(newNickle));
 	}
 
 }
