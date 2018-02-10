@@ -11,7 +11,7 @@ public class VendingMachine {
 			return "quarter";
 		}
 		if (coin.getSize() == 3 && coin.getWeight() == 3) {
-			return "nickle";
+			return "nickel";
 		}
 		if (coin.getSize() == 2 && coin.getWeight() == 2) {
 			return "penny";
@@ -26,6 +26,9 @@ public class VendingMachine {
 		String coinType = idCoin(coin);
 
 		if (coinType.equals("quarter")) {
+			coinHold.add(coin);
+		}
+		if (coinType.equals("nickel")) {
 			coinHold.add(coin);
 		}
 	}

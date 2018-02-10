@@ -22,8 +22,8 @@ public class VendingMachineTest {
 
 	@Test
 	public void whenIdCoinIsPassedANickleItReturnsNickle() {
-		Nickle newNickle = new Nickle();
-		assertEquals("nickle", underTest.idCoin(newNickle));
+		Nickel newNickle = new Nickel();
+		assertEquals("nickel", underTest.idCoin(newNickle));
 	}
 
 	@Test
@@ -47,12 +47,22 @@ public class VendingMachineTest {
 	}
 
 	@Test
-	public void acceptCoinPutCoinInHoldIfItIsAQuarter() {
+	public void acceptCoinPutsCoinInHoldIfItIsAQuarter() {
 		Quarter newQuarter = new Quarter();
 		underTest.acceptCoin(newQuarter);
 		Penny newPenny = new Penny();
 		underTest.acceptCoin(newPenny);
 		assertEquals(true, underTest.coinHold.contains(newQuarter));
+		assertEquals(false, underTest.coinHold.contains(newPenny));
+	}
+
+	@Test
+	public void acceptCoinPutsCoinInHoldIfItIsANickle() {
+		Nickel newNickel = new Nickel();
+		underTest.acceptCoin(newNickel);
+		Penny newPenny = new Penny();
+		underTest.acceptCoin(newPenny);
+		assertEquals(true, underTest.coinHold.contains(newNickel));
 		assertEquals(false, underTest.coinHold.contains(newPenny));
 	}
 
