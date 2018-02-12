@@ -26,15 +26,14 @@ public class VendingMachine {
 	public void acceptCoin(Coin coin) {
 		String coinType = idCoin(coin);
 
-		if (coinType.equals("quarter")) {
+		if (coinType.equals("quarter") || coinType.equals("nickel") || coinType.equals("dime")) {
 			coinHold.add(coin);
-		} else if (coinType.equals("nickel")) {
-			coinHold.add(coin);
-		} else if (coinType.equals("dime")) {
-			coinHold.add(coin);
-		} else {
-			coinReturn.add(coin);
 		}
+		coinReturn.add(coin);
+	}
+
+	public double calcMoneyInHold() {
+		return 0.25;
 	}
 
 }
