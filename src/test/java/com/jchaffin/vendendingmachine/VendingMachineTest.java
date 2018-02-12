@@ -123,4 +123,11 @@ public class VendingMachineTest {
 		assertEquals(true, underTest.stock.contains(newCola));
 	}
 
+	@Test
+	public void stockItemAddsChipsToStock() {
+		Chips newChips = new Chips();
+		underTest.stockItem(newChips);
+		assertEquals(true, underTest.stock.contains(newChips));
+	}
+
 }
