@@ -90,4 +90,12 @@ public class VendingMachineTest {
 		assertEquals(0.25, underTest.calcMoneyInHold(), 0);
 	}
 
+	@Test
+	public void calcMoneyInHoldReturnsZeroPointFiveWhenAcceptCoinIsPassedTwoQuarters() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		assertEquals(0.50, underTest.calcMoneyInHold(), 0);
+	}
+
 }

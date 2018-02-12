@@ -25,7 +25,6 @@ public class VendingMachine {
 
 	public void acceptCoin(Coin coin) {
 		String coinType = idCoin(coin);
-
 		if (coinType.equals("quarter") || coinType.equals("nickel") || coinType.equals("dime")) {
 			coinHold.add(coin);
 		}
@@ -33,7 +32,14 @@ public class VendingMachine {
 	}
 
 	public double calcMoneyInHold() {
-		return 0.25;
+		double moneyInHold = 0;
+		for (Coin coin : coinHold) {
+			String coinType = idCoin(coin);
+			if (coinType.equals("quarter")) {
+				moneyInHold += 0.25;
+			}
+		}
+		return moneyInHold;
 	}
 
 }
