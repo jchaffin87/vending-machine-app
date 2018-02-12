@@ -76,4 +76,11 @@ public class VendingMachineTest {
 		assertEquals(false, underTest.coinHold.contains(newPenny));
 	}
 
+	@Test
+	public void acceptCoinPutsCoinInCoinReturnIfItsAPenny() {
+		Penny newPenny = new Penny();
+		underTest.acceptCoin(newPenny);
+		assertEquals(true, underTest.coinReturn.contains(newPenny));
+	}
+
 }
