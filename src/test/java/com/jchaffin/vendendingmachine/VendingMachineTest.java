@@ -107,4 +107,20 @@ public class VendingMachineTest {
 		assertEquals(0.30, underTest.calcMoneyInHold(), 0);
 	}
 
+	@Test
+	public void calcMoneyInHoldReturnsZeroPointThreeFiveWhenAcceptCoinIsPassedOneQuarterAndOneDime() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		Dime newDime = new Dime();
+		underTest.acceptCoin(newDime);
+		assertEquals(0.35, underTest.calcMoneyInHold(), 0);
+	}
+
+	@Test
+	public void stockItemAddsColaToStock() {
+		Cola newCola = new Cola();
+		underTest.stockItem(newCola);
+		assertEquals(true, underTest.stock.contains(newCola));
+	}
+
 }

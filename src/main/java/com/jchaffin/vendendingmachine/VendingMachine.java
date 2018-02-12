@@ -6,6 +6,7 @@ public class VendingMachine {
 
 	ArrayList<Coin> coinHold = new ArrayList<Coin>();
 	ArrayList<Coin> coinReturn = new ArrayList<Coin>();
+	ArrayList<Item> stock = new ArrayList<Item>();
 
 	public String idCoin(Coin coin) {
 		if (coin.getSize() == 4 && coin.getWeight() == 4) {
@@ -41,8 +42,15 @@ public class VendingMachine {
 			if (coinType.equals("nickel")) {
 				moneyInHold += 0.05;
 			}
+			if (coinType.equals("dime")) {
+				moneyInHold += 0.10;
+			}
 		}
 		return moneyInHold;
+	}
+
+	public void stockItem(Item newItem) {
+		stock.add(newItem);
 	}
 
 }
