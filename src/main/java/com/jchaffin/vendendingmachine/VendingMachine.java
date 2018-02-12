@@ -38,6 +38,9 @@ public class VendingMachine {
 			if (coinType.equals("quarter")) {
 				moneyInHold += 0.25;
 			}
+			if (coinType.equals("nickel")) {
+				moneyInHold += 0.05;
+			}
 		}
 		return moneyInHold;
 	}

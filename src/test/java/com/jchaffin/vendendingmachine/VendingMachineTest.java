@@ -21,7 +21,7 @@ public class VendingMachineTest {
 	}
 
 	@Test
-	public void whenIdCoinIsPassedANickleItReturnsNickle() {
+	public void whenIdCoinIsPassedANickleItReturnsNickel() {
 		Nickel newNickle = new Nickel();
 		assertEquals("nickel", underTest.idCoin(newNickle));
 	}
@@ -57,7 +57,7 @@ public class VendingMachineTest {
 	}
 
 	@Test
-	public void acceptCoinPutsCoinInHoldIfItIsANickle() {
+	public void acceptCoinPutsCoinInHoldIfItIsANickel() {
 		Nickel newNickel = new Nickel();
 		underTest.acceptCoin(newNickel);
 		Penny newPenny = new Penny();
@@ -96,6 +96,15 @@ public class VendingMachineTest {
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
 		assertEquals(0.50, underTest.calcMoneyInHold(), 0);
+	}
+
+	@Test
+	public void calcMoneyInHoldReturnsZeroPointThreeWhenAcceptCoinIsPassedOneQuarterAndOneNickel() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		Nickel newNickel = new Nickel();
+		underTest.acceptCoin(newNickel);
+		assertEquals(0.30, underTest.calcMoneyInHold(), 0);
 	}
 
 }
