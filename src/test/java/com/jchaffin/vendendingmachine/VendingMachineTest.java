@@ -151,4 +151,34 @@ public class VendingMachineTest {
 		assertEquals(false, underTest.checkStock("cola"));
 	}
 
+	@Test
+	public void checkStockReturnsTrueWhenPassedCandyAndBothCandyItemAndColaItemsAreStocked() {
+		Candy newCandy = new Candy();
+		underTest.stockItem(newCandy);
+		Cola newCola = new Cola();
+		underTest.stockItem(newCola);
+		assertEquals(true, underTest.checkStock("candy"));
+	}
+
+	@Test
+	public void checkStockReturnsTrueBothWhenPassedCandyAndWhenPassedColaWhenCandyItemAndColaItemAreStocked() {
+		Candy newCandy = new Candy();
+		underTest.stockItem(newCandy);
+		Cola newCola = new Cola();
+		underTest.stockItem(newCola);
+		assertEquals(true, underTest.checkStock("candy"));
+		assertEquals(true, underTest.checkStock("cola"));
+	}
+
+	@Test
+	public void checkStockReturnsTrueBothWhenPassedCandyAndWhenPassedColaButFalseWhenPassedChipsWhenCandyItemAndColaItemAreStocked() {
+		Candy newCandy = new Candy();
+		underTest.stockItem(newCandy);
+		Cola newCola = new Cola();
+		underTest.stockItem(newCola);
+		assertEquals(true, underTest.checkStock("candy"));
+		assertEquals(true, underTest.checkStock("cola"));
+		assertEquals(false, underTest.checkStock("chips"));
+	}
+
 }
