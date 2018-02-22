@@ -209,11 +209,18 @@ public class VendingMachineTest {
 	}
 
 	@Test
-	public void checkStockReturnsFalseWhenItemIsStockedAndThenDispenseItemIsPassedThatItem() {
+	public void checkStockReturnsFalseWhenColaItemIsStockedAndThenDispenseItemIsPassedThatColaItem() {
 		Cola newCola = new Cola();
 		underTest.stockItem(newCola);
 		underTest.dispenseItem(newCola);
 		assertEquals(false, underTest.checkStock(newCola.getType()));
 	}
 
+	@Test
+	public void checkStockReturnsFalseWhenChipsItemIsStockedAndThenDispenseItemIsPassedThatChipsItem() {
+		Chips newChips = new Chips();
+		underTest.stockItem(newChips);
+		underTest.dispenseItem(newChips);
+		assertEquals(false, underTest.checkStock(newChips.getType()));
+	}
 }
