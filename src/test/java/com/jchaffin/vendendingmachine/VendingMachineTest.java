@@ -240,4 +240,16 @@ public class VendingMachineTest {
 		assertEquals(0, underTest.calcMoneyInHold(), 0);
 		assertEquals(true, underTest.bank.contains(newQuarter));
 	}
+
+	@Test
+	public void calcMoneyInHoldReturnsZeroAndCoinsInHoldArePutInBankWhenOneQuarterAndOneDimeIsAcceptedAndBankCoinsIsRun() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		Dime newDime = new Dime();
+		underTest.acceptCoin(newDime);
+		underTest.bankCoins();
+		assertEquals(0, underTest.calcMoneyInHold(), 0);
+		assertEquals(true, underTest.bank.contains(newQuarter));
+		assertEquals(true, underTest.bank.contains(newDime));
+	}
 }
