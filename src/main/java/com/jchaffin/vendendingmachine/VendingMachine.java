@@ -64,7 +64,11 @@ public class VendingMachine {
 	}
 
 	public boolean checkSufficientFunds(Item selectedItem) {
-		return true;
+		boolean sufficientFunds = false;
+		if (selectedItem.getPrice() == calcMoneyInHold()) {
+			sufficientFunds = true;
+		}
+		return sufficientFunds;
 	}
 
 }
