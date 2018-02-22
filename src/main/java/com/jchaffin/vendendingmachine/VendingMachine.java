@@ -53,4 +53,8 @@ public class VendingMachine {
 		stock.add(newItem);
 	}
 
+	public boolean checkStock(String itemType) {
+		return true;
+	}
+
 }

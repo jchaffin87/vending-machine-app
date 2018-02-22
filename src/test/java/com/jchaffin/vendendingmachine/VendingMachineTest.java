@@ -104,7 +104,7 @@ public class VendingMachineTest {
 		underTest.acceptCoin(newQuarter);
 		Nickel newNickel = new Nickel();
 		underTest.acceptCoin(newNickel);
-		assertEquals(0.30, underTest.calcMoneyInHold(), 0);
+		assertEquals(0.3, underTest.calcMoneyInHold(), 0);
 	}
 
 	@Test
@@ -135,6 +135,13 @@ public class VendingMachineTest {
 		Candy newCandy = new Candy();
 		underTest.stockItem(newCandy);
 		assertEquals(true, underTest.stock.contains(newCandy));
+	}
+
+	@Test
+	public void checkStockReturnsTrueWhenPassedCandyAndCandyItemIsStocked() {
+		Candy newCandy = new Candy();
+		underTest.stockItem(newCandy);
+		assertEquals(true, underTest.checkStock("candy"));
 	}
 
 }
