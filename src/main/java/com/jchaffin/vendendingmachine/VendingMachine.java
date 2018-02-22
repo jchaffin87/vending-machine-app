@@ -75,4 +75,8 @@ public class VendingMachine {
 		stock.remove(item);
 	}
 
+	public void bankCoins() {
+		coinHold.clear();
+	}
+
 }

@@ -223,4 +223,12 @@ public class VendingMachineTest {
 		underTest.dispenseItem(newChips);
 		assertEquals(false, underTest.checkStock(newChips.getType()));
 	}
+
+	@Test
+	public void calcMoneyInHoldReturnsZeroWhenOneQuarterIsAcceptedAndBankCoinsIsRun() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.bankCoins();
+		assertEquals(0, underTest.calcMoneyInHold(), 0);
+	}
 }
