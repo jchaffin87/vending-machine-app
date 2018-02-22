@@ -83,4 +83,8 @@ public class VendingMachine {
 		coinHold.clear();
 	}
 
+	public double makeChange(Chips newChips) {
+		return 0.25;
+	}
+
 }

@@ -252,4 +252,14 @@ public class VendingMachineTest {
 		assertEquals(true, underTest.bank.contains(newQuarter));
 		assertEquals(true, underTest.bank.contains(newDime));
 	}
+
+	@Test
+	public void makeChangeReturnsZeroPointTwoFiveWhenThreeQuartersAreAcceptedAndItsPassedAChipsItem() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		Chips newChips = new Chips();
+		assertEquals(0.25, underTest.makeChange(newChips), 0);
+	}
 }
