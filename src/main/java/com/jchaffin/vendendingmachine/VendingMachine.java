@@ -71,4 +71,8 @@ public class VendingMachine {
 		return sufficientFunds;
 	}
 
+	public void dispenseItem(Cola cola) {
+		stock.remove(cola);
+	}
+
 }

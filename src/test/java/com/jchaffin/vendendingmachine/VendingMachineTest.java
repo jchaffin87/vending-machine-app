@@ -208,4 +208,12 @@ public class VendingMachineTest {
 		assertEquals(true, underTest.checkSufficientFunds(newChips));
 	}
 
+	@Test
+	public void checkStockReturnsFalseWhenItemIsStockedAndThenDispenseItemIsPassedThatItem() {
+		Cola newCola = new Cola();
+		underTest.stockItem(newCola);
+		underTest.dispenseItem(newCola);
+		assertEquals(false, underTest.checkStock(newCola.getType()));
+	}
+
 }
