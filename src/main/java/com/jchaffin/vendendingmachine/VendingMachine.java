@@ -65,7 +65,7 @@ public class VendingMachine {
 
 	public boolean checkSufficientFunds(Item selectedItem) {
 		boolean sufficientFunds = false;
-		if (selectedItem.getPrice() == calcMoneyInHold()) {
+		if (selectedItem.getPrice() <= calcMoneyInHold()) {
 			sufficientFunds = true;
 		}
 		return sufficientFunds;
