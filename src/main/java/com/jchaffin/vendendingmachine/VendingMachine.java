@@ -63,4 +63,8 @@ public class VendingMachine {
 		return inStock;
 	}
 
+	public boolean checkSufficientFunds(Item selectedItem) {
+		return true;
+	}
+
 }

@@ -181,4 +181,13 @@ public class VendingMachineTest {
 		assertEquals(false, underTest.checkStock("chips"));
 	}
 
+	@Test
+	public void checkSufficientFundsReturnsTrueWhenPassedChipsItemAndTwoQuartersAreAccepted() {
+		Chips newChips = new Chips();
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		assertEquals(true, underTest.checkSufficientFunds(newChips));
+	}
+
 }
