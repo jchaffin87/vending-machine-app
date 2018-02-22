@@ -144,4 +144,11 @@ public class VendingMachineTest {
 		assertEquals(true, underTest.checkStock("candy"));
 	}
 
+	@Test
+	public void checkStockReturnsFalseWhenPassedColaAndOnlyCandyItemIsStocked() {
+		Candy newCandy = new Candy();
+		underTest.stockItem(newCandy);
+		assertEquals(false, underTest.checkStock("cola"));
+	}
+
 }

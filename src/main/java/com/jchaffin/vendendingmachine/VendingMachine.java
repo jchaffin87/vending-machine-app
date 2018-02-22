@@ -54,7 +54,13 @@ public class VendingMachine {
 	}
 
 	public boolean checkStock(String itemType) {
-		return true;
+		boolean inStock = false;
+		for (Item item : stock) {
+			if (item.getType().equals(itemType)) {
+				inStock = true;
+			}
+		}
+		return inStock;
 	}
 
 }
