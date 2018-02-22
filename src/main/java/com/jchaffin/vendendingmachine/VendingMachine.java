@@ -6,6 +6,7 @@ public class VendingMachine {
 
 	ArrayList<Coin> coinHold = new ArrayList<Coin>();
 	ArrayList<Coin> coinReturn = new ArrayList<Coin>();
+	ArrayList<Coin> bank = new ArrayList<Coin>();
 	ArrayList<Item> stock = new ArrayList<Item>();
 
 	public String idCoin(Coin coin) {
@@ -76,6 +77,9 @@ public class VendingMachine {
 	}
 
 	public void bankCoins() {
+		for (Coin coin : coinHold) {
+			bank.add(coin);
+		}
 		coinHold.clear();
 	}
 
