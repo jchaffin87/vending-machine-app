@@ -1,5 +1,6 @@
 package com.jchaffin.vendendingmachine;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class VendingMachine {
@@ -33,18 +34,18 @@ public class VendingMachine {
 		coinReturn.add(coin);
 	}
 
-	public double calcMoneyInHold() {
-		double moneyInHold = 0;
+	public BigDecimal calcMoneyInHold() {
+		BigDecimal moneyInHold = new BigDecimal("0.00");
 		for (Coin coin : coinHold) {
 			String coinType = idCoin(coin);
 			if (coinType.equals("quarter")) {
-				moneyInHold += 0.25;
+				moneyInHold = moneyInHold.add(new BigDecimal("0.25"));
 			}
 			if (coinType.equals("nickel")) {
-				moneyInHold += 0.05;
+				moneyInHold = moneyInHold.add(new BigDecimal("0.05"));
 			}
 			if (coinType.equals("dime")) {
-				moneyInHold += 0.10;
+				moneyInHold = moneyInHold.add(new BigDecimal("0.10"));
 			}
 		}
 		return moneyInHold;
@@ -66,7 +67,7 @@ public class VendingMachine {
 
 	public boolean checkSufficientFunds(Item selectedItem) {
 		boolean sufficientFunds = false;
-		if (selectedItem.getPrice() <= calcMoneyInHold()) {
+		if (selectedItem.getPrice().compareTo(calcMoneyInHold()) <= 0) {
 			sufficientFunds = true;
 		}
 		return sufficientFunds;
@@ -83,8 +84,9 @@ public class VendingMachine {
 		coinHold.clear();
 	}
 
-	public double makeChange(Chips newChips) {
-		return 0.25;
+	public BigDecimal makeChange(Item chosenItem) {
+		BigDecimal change = calcMoneyInHold().subtract(chosenItem.getPrice());
+		return change;
 	}
 
 }

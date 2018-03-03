@@ -1,17 +1,19 @@
 package com.jchaffin.vendendingmachine;
 
+import java.math.BigDecimal;
+
 public class Cola implements Item {
 
-	private double price = 1.00;
+	private BigDecimal price = new BigDecimal("1.00");
 	private String type = "cola";
 
 	@Override
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
 	@Override
-	public double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 

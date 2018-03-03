@@ -1,10 +1,12 @@
 package com.jchaffin.vendendingmachine;
 
+import java.math.BigDecimal;
+
 public interface Item {
 
-	public void setPrice(double price);
+	public void setPrice(BigDecimal price);
 
-	public double getPrice();
+	public BigDecimal getPrice();
 
 	public void setType(String type);
 

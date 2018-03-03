@@ -1,17 +1,19 @@
 package com.jchaffin.vendendingmachine;
 
+import java.math.BigDecimal;
+
 public class Chips implements Item {
 
-	private double price = 0.50;
+	private BigDecimal price = new BigDecimal("0.50");
 	private String type = "chips";
 
 	@Override
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
 	@Override
-	public double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 

@@ -2,6 +2,8 @@ package com.jchaffin.vendendingmachine;
 
 import static org.junit.Assert.assertEquals;
 
+import java.math.BigDecimal;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -87,7 +89,7 @@ public class VendingMachineTest {
 	public void calcMoneyInHoldReturnsZeroPointTwoFiveWhenAcceptCoinIsPassedOneQuarter() {
 		Quarter newQuarter = new Quarter();
 		underTest.acceptCoin(newQuarter);
-		assertEquals(0.25, underTest.calcMoneyInHold(), 0);
+		assertEquals(new BigDecimal("0.25"), underTest.calcMoneyInHold());
 	}
 
 	@Test
@@ -95,7 +97,7 @@ public class VendingMachineTest {
 		Quarter newQuarter = new Quarter();
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
-		assertEquals(0.50, underTest.calcMoneyInHold(), 0);
+		assertEquals(new BigDecimal("0.50"), underTest.calcMoneyInHold());
 	}
 
 	@Test
@@ -104,7 +106,7 @@ public class VendingMachineTest {
 		underTest.acceptCoin(newQuarter);
 		Nickel newNickel = new Nickel();
 		underTest.acceptCoin(newNickel);
-		assertEquals(0.3, underTest.calcMoneyInHold(), 0);
+		assertEquals(new BigDecimal("0.30"), underTest.calcMoneyInHold());
 	}
 
 	@Test
@@ -113,7 +115,7 @@ public class VendingMachineTest {
 		underTest.acceptCoin(newQuarter);
 		Dime newDime = new Dime();
 		underTest.acceptCoin(newDime);
-		assertEquals(0.35, underTest.calcMoneyInHold(), 0);
+		assertEquals(new BigDecimal("0.35"), underTest.calcMoneyInHold());
 	}
 
 	@Test
@@ -229,7 +231,7 @@ public class VendingMachineTest {
 		Quarter newQuarter = new Quarter();
 		underTest.acceptCoin(newQuarter);
 		underTest.bankCoins();
-		assertEquals(0, underTest.calcMoneyInHold(), 0);
+		assertEquals(new BigDecimal("0.00"), underTest.calcMoneyInHold());
 	}
 
 	@Test
@@ -237,7 +239,7 @@ public class VendingMachineTest {
 		Quarter newQuarter = new Quarter();
 		underTest.acceptCoin(newQuarter);
 		underTest.bankCoins();
-		assertEquals(0, underTest.calcMoneyInHold(), 0);
+		assertEquals(new BigDecimal("0.00"), underTest.calcMoneyInHold());
 		assertEquals(true, underTest.bank.contains(newQuarter));
 	}
 
@@ -248,7 +250,7 @@ public class VendingMachineTest {
 		Dime newDime = new Dime();
 		underTest.acceptCoin(newDime);
 		underTest.bankCoins();
-		assertEquals(0, underTest.calcMoneyInHold(), 0);
+		assertEquals(new BigDecimal("0.00"), underTest.calcMoneyInHold());
 		assertEquals(true, underTest.bank.contains(newQuarter));
 		assertEquals(true, underTest.bank.contains(newDime));
 	}
@@ -260,6 +262,18 @@ public class VendingMachineTest {
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
 		Chips newChips = new Chips();
-		assertEquals(0.25, underTest.makeChange(newChips), 0);
+		assertEquals(new BigDecimal("0.25"), underTest.makeChange(newChips));
+	}
+
+	@Test
+	public void makeChangeReturnsZeroPointZeroFiveWhenTwoQuartersAndTwoDimesAreAcceptedAndItsPassedACandyItem() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		Dime newDime = new Dime();
+		underTest.acceptCoin(newDime);
+		underTest.acceptCoin(newDime);
+		Candy newCandy = new Candy();
+		assertEquals(new BigDecimal("0.05"), underTest.makeChange(newCandy));
 	}
 }
