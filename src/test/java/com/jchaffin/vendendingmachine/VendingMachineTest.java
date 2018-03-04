@@ -284,8 +284,18 @@ public class VendingMachineTest {
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
 		Chips newChips = new Chips();
-		underTest.makeChange(newChips);
-		assertEquals(1, underTest.calcNumOfQsInChange());
+		assertEquals(new BigDecimal("1"), underTest.calcNumOfQsInChange(newChips));
+	}
+
+	@Test
+	public void calcNumOfQsInChangeReturnsTwoWhenChangeEqualsZeroPointFiveZero() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		Chips newChips = new Chips();
+		assertEquals(new BigDecimal("2"), underTest.calcNumOfQsInChange(newChips));
 	}
 
 }

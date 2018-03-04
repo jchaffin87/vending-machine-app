@@ -89,8 +89,9 @@ public class VendingMachine {
 		return change;
 	}
 
-	public Object calcNumOfQsInChange() {
-		return 1;
+	public Object calcNumOfQsInChange(Item chosenItem) {
+		BigDecimal numOfQsInChange = makeChange(chosenItem).divideToIntegralValue(new BigDecimal("0.25"));
+		return numOfQsInChange;
 	}
 
 }
