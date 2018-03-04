@@ -310,4 +310,20 @@ public class VendingMachineTest {
 		assertEquals(new BigDecimal("3"), underTest.calcNumOfQsInChange(newChips));
 	}
 
+	@Test
+	public void calcNumOfQsInChangeReturnsThreeWhenChangeEqualsZeroPointNineZero() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		Dime newDime = new Dime();
+		underTest.acceptCoin(newDime);
+		Nickel newNickel = new Nickel();
+		underTest.acceptCoin(newNickel);
+		Chips newChips = new Chips();
+		assertEquals(new BigDecimal("3"), underTest.calcNumOfQsInChange(newChips));
+	}
+
 }
