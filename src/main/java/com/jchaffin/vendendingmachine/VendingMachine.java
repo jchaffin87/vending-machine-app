@@ -89,4 +89,8 @@ public class VendingMachine {
 		return change;
 	}
 
+	public Object calcNumOfQsInChange() {
+		return 1;
+	}
+
 }

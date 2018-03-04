@@ -276,4 +276,16 @@ public class VendingMachineTest {
 		Candy newCandy = new Candy();
 		assertEquals(new BigDecimal("0.05"), underTest.makeChange(newCandy));
 	}
+
+	@Test
+	public void calcNumOfQsInChangeReturnsOneWhenChangeEqualsZeroPointTwoFive() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		Chips newChips = new Chips();
+		underTest.makeChange(newChips);
+		assertEquals(1, underTest.calcNumOfQsInChange());
+	}
+
 }
