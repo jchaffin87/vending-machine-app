@@ -95,7 +95,9 @@ public class VendingMachine {
 	}
 
 	public BigDecimal calcNumOfDsInChange(Item chosenItem) {
-		BigDecimal numOfDsInChange = makeChange(chosenItem).divideToIntegralValue(new BigDecimal("0.10"));
+		BigDecimal changeMinusQuarters = makeChange(chosenItem)
+				.subtract(calcNumOfQsInChange(chosenItem).multiply(new BigDecimal("0.25")));
+		BigDecimal numOfDsInChange = changeMinusQuarters.divideToIntegralValue(new BigDecimal("0.10"));
 		return numOfDsInChange;
 	}
 
