@@ -113,10 +113,21 @@ public class VendingMachine {
 
 	public void returnChange(Item chosenItem) {
 		BigDecimal numOfQuartersInChange = calcNumOfQsInChange(chosenItem);
+		BigDecimal numOfDimesInChange = calcNumOfDsInChange(chosenItem);
 		for (int i = 0; i <= numOfQuartersInChange.intValue(); i++) {
 			for (Coin coin : bank) {
 				String coinType = idCoin(coin);
 				if (coinType.equals("quarter")) {
+					coinReturn.add(coin);
+					bank.remove(coin);
+					break;
+				}
+			}
+		}
+		for (int i = 0; i <= numOfDimesInChange.intValue(); i++) {
+			for (Coin coin : bank) {
+				String coinType = idCoin(coin);
+				if (coinType.equals("dime")) {
 					coinReturn.add(coin);
 					bank.remove(coin);
 					break;
