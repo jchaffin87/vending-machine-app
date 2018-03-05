@@ -419,4 +419,16 @@ public class VendingMachineTest {
 		assertEquals(new BigDecimal("0"), underTest.calcNumOfNsInChange(newChips));
 	}
 
+	@Test
+	public void calcNumOfNsInChangeReturnsZeroWhenChangeEqualsZeroPointThreeFive() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		Dime newDime = new Dime();
+		underTest.acceptCoin(newDime);
+		Chips newChips = new Chips();
+		assertEquals(new BigDecimal("0"), underTest.calcNumOfNsInChange(newChips));
+	}
+
 }
