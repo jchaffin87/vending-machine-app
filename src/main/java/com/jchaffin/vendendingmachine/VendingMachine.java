@@ -102,7 +102,10 @@ public class VendingMachine {
 	}
 
 	public BigDecimal calcNumOfNsInChange(Item chosenItem) {
-		return new BigDecimal("1");
+		BigDecimal changeMinusQuarters = makeChange(chosenItem)
+				.subtract(calcNumOfQsInChange(chosenItem).multiply(new BigDecimal("0.25")));
+		BigDecimal numOfNsInChange = changeMinusQuarters.divideToIntegralValue(new BigDecimal("0.05"));
+		return numOfNsInChange;
 	}
 
 }
