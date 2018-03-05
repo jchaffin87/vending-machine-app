@@ -101,4 +101,8 @@ public class VendingMachine {
 		return numOfDsInChange;
 	}
 
+	public BigDecimal calcNumOfNsInChange(Item chosenItem) {
+		return new BigDecimal("1");
+	}
+
 }
