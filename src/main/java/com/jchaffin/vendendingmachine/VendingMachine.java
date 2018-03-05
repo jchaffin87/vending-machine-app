@@ -30,8 +30,9 @@ public class VendingMachine {
 		String coinType = idCoin(coin);
 		if (coinType.equals("quarter") || coinType.equals("nickel") || coinType.equals("dime")) {
 			coinHold.add(coin);
+		} else {
+			coinReturn.add(coin);
 		}
-		coinReturn.add(coin);
 	}
 
 	public BigDecimal calcMoneyInHold() {
@@ -108,6 +109,20 @@ public class VendingMachine {
 				.subtract(calcNumOfDsInChange(chosenItem).multiply(new BigDecimal("0.10")));
 		BigDecimal numOfNsInChange = changeMinusQuartersAndDimes.divideToIntegralValue(new BigDecimal("0.05"));
 		return numOfNsInChange;
+	}
+
+	public void returnChange(Item chosenItem) {
+		BigDecimal numOfQuartersInChange = calcNumOfQsInChange(chosenItem);
+		for (int i = 0; i <= numOfQuartersInChange.intValue(); i++) {
+			for (Coin coin : bank) {
+				String coinType = idCoin(coin);
+				if (coinType.equals("quarter")) {
+					coinReturn.add(coin);
+					bank.remove(coin);
+					break;
+				}
+			}
+		}
 	}
 
 }

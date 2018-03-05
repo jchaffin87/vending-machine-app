@@ -444,4 +444,18 @@ public class VendingMachineTest {
 		assertEquals(new BigDecimal("1"), underTest.calcNumOfNsInChange(newChips));
 	}
 
+	@Test
+	public void returnChangeTakesQuarterFromBankAndAddsItToCoinReturnWhenChangeEqualsZeroPointTwoFive() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		underTest.bank.add(newQuarter);
+		Chips newChips = new Chips();
+		underTest.returnChange(newChips);
+		assertEquals(false, underTest.bank.contains(newQuarter));
+		assertEquals(true, underTest.coinReturn.contains(newQuarter));
+		assertEquals(1, underTest.coinReturn.size());
+	}
+
 }
