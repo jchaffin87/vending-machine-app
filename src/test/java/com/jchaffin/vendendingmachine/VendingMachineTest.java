@@ -512,4 +512,14 @@ public class VendingMachineTest {
 		assertEquals(3, underTest.coinReturn.size());
 	}
 
+	@Test
+	public void checkExactChangeNeededReturnsTrueWhenOnlyFourQuartersAreInBank() {
+		Quarter newQuarter = new Quarter();
+		underTest.bank.add(newQuarter);
+		underTest.bank.add(newQuarter);
+		underTest.bank.add(newQuarter);
+		underTest.bank.add(newQuarter);
+		assertEquals(true, underTest.checkExactChangeNeeded());
+	}
+
 }

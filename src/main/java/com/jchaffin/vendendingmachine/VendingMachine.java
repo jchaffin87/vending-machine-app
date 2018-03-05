@@ -148,4 +148,8 @@ public class VendingMachine {
 		}
 	}
 
+	public boolean checkExactChangeNeeded() {
+		return true;
+	}
+
 }
