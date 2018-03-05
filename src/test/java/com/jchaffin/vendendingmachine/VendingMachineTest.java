@@ -488,4 +488,28 @@ public class VendingMachineTest {
 		assertEquals(1, underTest.coinReturn.size());
 	}
 
+	@Test
+	public void returnChangeTakesOneQuarterOneDimeAndOneNickelFromBankAndAddsThemToCoinReturnWhenChangeEqualsZeroPointFourZero() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		underTest.bank.add(newQuarter);
+		Dime newDime = new Dime();
+		underTest.acceptCoin(newDime);
+		underTest.bank.add(newDime);
+		Nickel newNickel = new Nickel();
+		underTest.acceptCoin(newNickel);
+		underTest.bank.add(newNickel);
+		Chips newChips = new Chips();
+		underTest.returnChange(newChips);
+		assertEquals(false, underTest.bank.contains(newNickel));
+		assertEquals(true, underTest.coinReturn.contains(newNickel));
+		assertEquals(false, underTest.bank.contains(newDime));
+		assertEquals(true, underTest.coinReturn.contains(newDime));
+		assertEquals(false, underTest.bank.contains(newQuarter));
+		assertEquals(true, underTest.coinReturn.contains(newQuarter));
+		assertEquals(3, underTest.coinReturn.size());
+	}
+
 }
