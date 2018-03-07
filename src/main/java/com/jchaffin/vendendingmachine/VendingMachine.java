@@ -149,7 +149,18 @@ public class VendingMachine {
 	}
 
 	public boolean checkExactChangeNeeded() {
-		return true;
+		int countQuarters = 0;
+		boolean exactChangeNeeded = false;
+		for (Coin coin : bank) {
+			String coinType = idCoin(coin);
+			if (coinType.equals("quarter")) {
+				countQuarters++;
+			}
+		}
+		if (countQuarters < 5) {
+			exactChangeNeeded = true;
+		}
+		return exactChangeNeeded;
 	}
 
 }
