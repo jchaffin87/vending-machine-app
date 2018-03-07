@@ -150,14 +150,18 @@ public class VendingMachine {
 
 	public boolean checkExactChangeNeeded() {
 		int countQuarters = 0;
+		int countDimes = 0;
 		boolean exactChangeNeeded = false;
 		for (Coin coin : bank) {
 			String coinType = idCoin(coin);
 			if (coinType.equals("quarter")) {
 				countQuarters++;
 			}
+			if (coinType.equals("dime")) {
+				countDimes++;
+			}
 		}
-		if (countQuarters < 5) {
+		if (countQuarters < 5 || countDimes < 5) {
 			exactChangeNeeded = true;
 		}
 		return exactChangeNeeded;
