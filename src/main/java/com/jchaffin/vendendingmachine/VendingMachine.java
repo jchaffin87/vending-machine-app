@@ -178,4 +178,8 @@ public class VendingMachine {
 		return countQuarters;
 	}
 
+	public int countNickelsInBank() {
+		return 1;
+	}
+
 }
