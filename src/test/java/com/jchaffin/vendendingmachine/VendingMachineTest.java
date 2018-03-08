@@ -550,4 +550,13 @@ public class VendingMachineTest {
 		underTest.bank.add(newNickel);
 		assertEquals(2, underTest.countNickelsInBank());
 	}
+
+	@Test
+	public void countNickelsInBankReturnsThreeWhenThreeNickelsAreInBank() {
+		Nickel newNickel = new Nickel();
+		underTest.bank.add(newNickel);
+		underTest.bank.add(newNickel);
+		underTest.bank.add(newNickel);
+		assertEquals(3, underTest.countNickelsInBank());
+	}
 }
