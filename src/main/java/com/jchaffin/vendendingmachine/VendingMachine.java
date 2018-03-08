@@ -183,8 +183,9 @@ public class VendingMachine {
 
 	public boolean checkExactChangeNeeded() {
 		int countQuarters = countQuartersInBank();
+		int countNickels = countNickelsInBank();
 		boolean exactChangeNeeded = false;
-		if (countQuarters < 5) {
+		if (countQuarters < 5 || countNickels < 5) {
 			exactChangeNeeded = true;
 		}
 		return exactChangeNeeded;
