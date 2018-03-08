@@ -606,4 +606,26 @@ public class VendingMachineTest {
 		assertEquals(true, underTest.checkExactChangeNeeded());
 	}
 
+	@Test
+	public void checkExactChangeNeededReturnsTrueWhenFiveQuartersFiveNickelsAndFourDimesAreInBank() {
+		Quarter newQuarter = new Quarter();
+		underTest.bank.add(newQuarter);
+		underTest.bank.add(newQuarter);
+		underTest.bank.add(newQuarter);
+		underTest.bank.add(newQuarter);
+		underTest.bank.add(newQuarter);
+		Nickel newNickel = new Nickel();
+		underTest.bank.add(newNickel);
+		underTest.bank.add(newNickel);
+		underTest.bank.add(newNickel);
+		underTest.bank.add(newNickel);
+		underTest.bank.add(newNickel);
+		Dime newDime = new Dime();
+		underTest.bank.add(newDime);
+		underTest.bank.add(newDime);
+		underTest.bank.add(newDime);
+		underTest.bank.add(newDime);
+		assertEquals(true, underTest.checkExactChangeNeeded());
+	}
+
 }
