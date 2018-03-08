@@ -28,6 +28,7 @@ public class VendingMachine {
 
 	public void acceptCoin(Coin coin) {
 		String coinType = idCoin(coin);
+
 		if (coinType.equals("quarter") || coinType.equals("nickel") || coinType.equals("dime")) {
 			coinHold.add(coin);
 		} else {
@@ -37,6 +38,7 @@ public class VendingMachine {
 
 	public BigDecimal calcMoneyInHold() {
 		BigDecimal moneyInHold = new BigDecimal("0.00");
+
 		for (Coin coin : coinHold) {
 			String coinType = idCoin(coin);
 			if (coinType.equals("quarter")) {
@@ -58,6 +60,7 @@ public class VendingMachine {
 
 	public boolean checkStock(String itemType) {
 		boolean inStock = false;
+
 		for (Item item : stock) {
 			if (item.getType().equals(itemType)) {
 				inStock = true;
@@ -68,6 +71,7 @@ public class VendingMachine {
 
 	public boolean checkSufficientFunds(Item selectedItem) {
 		boolean sufficientFunds = false;
+
 		if (selectedItem.getPrice().compareTo(calcMoneyInHold()) <= 0) {
 			sufficientFunds = true;
 		}
@@ -150,6 +154,7 @@ public class VendingMachine {
 
 	public int countQuartersInBank() {
 		int countQuarters = 0;
+
 		for (Coin coin : bank) {
 			String coinType = idCoin(coin);
 			if (coinType.equals("quarter")) {
@@ -161,6 +166,7 @@ public class VendingMachine {
 
 	public int countNickelsInBank() {
 		int countNickels = 0;
+
 		for (Coin coin : bank) {
 			String coinType = idCoin(coin);
 			if (coinType.equals("nickel")) {
@@ -172,6 +178,7 @@ public class VendingMachine {
 
 	public int countDimesInBank() {
 		int countDimes = 0;
+
 		for (Coin coin : bank) {
 			String coinType = idCoin(coin);
 			if (coinType.equals("dime")) {
@@ -186,6 +193,7 @@ public class VendingMachine {
 		int countNickels = countNickelsInBank();
 		int countDimes = countDimesInBank();
 		boolean exactChangeNeeded = false;
+
 		if (countQuarters < 5 || countNickels < 5 || countDimes < 5) {
 			exactChangeNeeded = true;
 		}
