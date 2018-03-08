@@ -513,40 +513,10 @@ public class VendingMachineTest {
 	}
 
 	@Test
-	public void checkExactChangeNeededReturnsTrueWhenOnlyFourQuartersAreInBank() {
+	public void countQuartersInBankReturnsOneWhenOneQuarterIsInBank() {
 		Quarter newQuarter = new Quarter();
 		underTest.bank.add(newQuarter);
-		underTest.bank.add(newQuarter);
-		underTest.bank.add(newQuarter);
-		underTest.bank.add(newQuarter);
-		assertEquals(true, underTest.checkExactChangeNeeded());
-	}
-
-	@Test
-	public void checkExactChangeNeededReturnsFalseWhenFiveQuartersAreInBank() {
-		Quarter newQuarter = new Quarter();
-		underTest.bank.add(newQuarter);
-		underTest.bank.add(newQuarter);
-		underTest.bank.add(newQuarter);
-		underTest.bank.add(newQuarter);
-		underTest.bank.add(newQuarter);
-		assertEquals(false, underTest.checkExactChangeNeeded());
-	}
-
-	@Test
-	public void checkExactChangeNeededReturnsTrueWhenFiveQuartersAndOnlyFourDimesAreInBank() {
-		Quarter newQuarter = new Quarter();
-		underTest.bank.add(newQuarter);
-		underTest.bank.add(newQuarter);
-		underTest.bank.add(newQuarter);
-		underTest.bank.add(newQuarter);
-		underTest.bank.add(newQuarter);
-		Dime newDime = new Dime();
-		underTest.bank.add(newDime);
-		underTest.bank.add(newDime);
-		underTest.bank.add(newDime);
-		underTest.bank.add(newDime);
-		assertEquals(true, underTest.checkExactChangeNeeded());
+		assertEquals(1, underTest.countQuartersInBank());
 	}
 
 }

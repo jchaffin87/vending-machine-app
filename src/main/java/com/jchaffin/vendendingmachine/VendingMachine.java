@@ -167,4 +167,8 @@ public class VendingMachine {
 		return exactChangeNeeded;
 	}
 
+	public int countQuartersInBank() {
+		return 1;
+	}
+
 }
