@@ -190,7 +190,14 @@ public class VendingMachine {
 	}
 
 	public int countDimesInBank() {
-		return 1;
+		int countDimes = 0;
+		for (Coin coin : bank) {
+			String coinType = idCoin(coin);
+			if (coinType.equals("dime")) {
+				countDimes++;
+			}
+		}
+		return countDimes;
 	}
 
 }
