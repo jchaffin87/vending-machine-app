@@ -148,25 +148,6 @@ public class VendingMachine {
 		}
 	}
 
-	public boolean checkExactChangeNeeded() {
-		int countQuarters = 0;
-		int countDimes = 0;
-		boolean exactChangeNeeded = false;
-		for (Coin coin : bank) {
-			String coinType = idCoin(coin);
-			if (coinType.equals("quarter")) {
-				countQuarters++;
-			}
-			if (coinType.equals("dime")) {
-				countDimes++;
-			}
-		}
-		if (countQuarters < 5 || countDimes < 5) {
-			exactChangeNeeded = true;
-		}
-		return exactChangeNeeded;
-	}
-
 	public int countQuartersInBank() {
 		int countQuarters = 0;
 		for (Coin coin : bank) {
@@ -198,6 +179,15 @@ public class VendingMachine {
 			}
 		}
 		return countDimes;
+	}
+
+	public boolean checkExactChangeNeeded() {
+		int countQuarters = countQuartersInBank();
+		boolean exactChangeNeeded = false;
+		if (countQuarters < 5) {
+			exactChangeNeeded = true;
+		}
+		return exactChangeNeeded;
 	}
 
 }
