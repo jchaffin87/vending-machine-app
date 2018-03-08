@@ -179,7 +179,14 @@ public class VendingMachine {
 	}
 
 	public int countNickelsInBank() {
-		return 1;
+		int countNickels = 0;
+		for (Coin coin : bank) {
+			String coinType = idCoin(coin);
+			if (coinType.equals("nickel")) {
+				countNickels++;
+			}
+		}
+		return countNickels;
 	}
 
 }
