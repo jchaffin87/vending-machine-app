@@ -519,4 +519,12 @@ public class VendingMachineTest {
 		assertEquals(1, underTest.countQuartersInBank());
 	}
 
+	@Test
+	public void countQuartersInBankReturnsTwoWhenTwoQuartersAreInBank() {
+		Quarter newQuarter = new Quarter();
+		underTest.bank.add(newQuarter);
+		underTest.bank.add(newQuarter);
+		assertEquals(2, underTest.countQuartersInBank());
+	}
+
 }

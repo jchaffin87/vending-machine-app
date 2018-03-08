@@ -168,7 +168,14 @@ public class VendingMachine {
 	}
 
 	public int countQuartersInBank() {
-		return 1;
+		int countQuarters = 0;
+		for (Coin coin : bank) {
+			String coinType = idCoin(coin);
+			if (coinType.equals("quarter")) {
+				countQuarters++;
+			}
+		}
+		return countQuarters;
 	}
 
 }
