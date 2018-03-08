@@ -574,4 +574,14 @@ public class VendingMachineTest {
 		underTest.bank.add(newDime);
 		assertEquals(2, underTest.countDimesInBank());
 	}
+
+	@Test
+	public void countDimesInBankReturnsThreeWhenThreeDimesAreInBank() {
+		Dime newDime = new Dime();
+		underTest.bank.add(newDime);
+		underTest.bank.add(newDime);
+		underTest.bank.add(newDime);
+		assertEquals(3, underTest.countDimesInBank());
+	}
+
 }
