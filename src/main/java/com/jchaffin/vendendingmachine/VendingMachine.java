@@ -200,4 +200,8 @@ public class VendingMachine {
 		return exactChangeNeeded;
 	}
 
+	public void returnCoins() {
+		coinHold.clear();
+	}
+
 }

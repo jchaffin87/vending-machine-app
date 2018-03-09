@@ -673,4 +673,12 @@ public class VendingMachineTest {
 		assertEquals(false, underTest.checkExactChangeNeeded());
 	}
 
+	@Test
+	public void calcMoneyInHoldReturnsZeroWhenOneQuarterIsAcceptedAndReturnCoinsIsRun() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.returnCoins();
+		assertEquals(new BigDecimal("0.00"), underTest.calcMoneyInHold());
+	}
+
 }
