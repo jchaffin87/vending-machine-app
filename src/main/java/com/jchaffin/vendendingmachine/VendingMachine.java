@@ -202,7 +202,7 @@ public class VendingMachine {
 
 	public void returnCoins() {
 		for (Coin coin : coinHold) {
-			coinReturn.add(coin);
+			bank.add(coin);
 		}
 		coinHold.clear();
 	}
