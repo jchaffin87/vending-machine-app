@@ -58,15 +58,26 @@ public class VendingMachine {
 		stock.add(newItem);
 	}
 
-	public boolean checkStock(String itemType) {
-		boolean inStock = false;
+	public boolean checkStockForItemType(String itemType) {
+		boolean typeInStock = false;
 
 		for (Item item : stock) {
 			if (item.getType().equals(itemType)) {
-				inStock = true;
+				typeInStock = true;
 			}
 		}
-		return inStock;
+		return typeInStock;
+	}
+
+	public boolean checkStockForItem(Item itemToCheck) {
+		boolean itemInStock = false;
+
+		for (Item item : stock) {
+			if (item.equals(itemToCheck)) {
+				itemInStock = true;
+			}
+		}
+		return itemInStock;
 	}
 
 	public boolean checkSufficientFunds(Item selectedItem) {
