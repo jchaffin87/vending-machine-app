@@ -54,6 +54,16 @@ public class VendingMachine {
 		return moneyInHold;
 	}
 
+	public boolean checkHoldContainsCoin(Coin coin) {
+		boolean coinInHold = false;
+
+		if (coinHold.contains(coin)) {
+			coinInHold = true;
+		}
+
+		return coinInHold;
+	}
+
 	public void stockItem(Item newItem) {
 		stock.add(newItem);
 	}
@@ -64,6 +74,7 @@ public class VendingMachine {
 		for (Item item : stock) {
 			if (item.getType().equals(itemType)) {
 				typeInStock = true;
+				break;
 			}
 		}
 		return typeInStock;
@@ -72,11 +83,10 @@ public class VendingMachine {
 	public boolean checkStockForItem(Item itemToCheck) {
 		boolean itemInStock = false;
 
-		for (Item item : stock) {
-			if (item.equals(itemToCheck)) {
-				itemInStock = true;
-			}
+		if (stock.contains(itemToCheck)) {
+			itemInStock = true;
 		}
+
 		return itemInStock;
 	}
 
@@ -98,6 +108,20 @@ public class VendingMachine {
 			bank.add(coin);
 		}
 		coinHold.clear();
+	}
+
+	public void putCoinDirectlyInBank(Coin coin) {
+		bank.add(coin);
+	}
+
+	public boolean checkBankContainsCoin(Coin coin) {
+		boolean coinInBank = false;
+
+		if (bank.contains(coin)) {
+			coinInBank = true;
+		}
+
+		return coinInBank;
 	}
 
 	public BigDecimal makeChange(Item chosenItem) {
@@ -216,6 +240,20 @@ public class VendingMachine {
 			coinReturn.add(coin);
 		}
 		coinHold.clear();
+	}
+
+	public boolean checkCoinReturnContainsCoin(Coin coin) {
+		boolean coinInReturn = false;
+
+		if (coinReturn.contains(coin)) {
+			coinInReturn = true;
+		}
+
+		return coinInReturn;
+	}
+
+	public int getSizeOfCoinReturn() {
+		return coinReturn.size();
 	}
 
 }
