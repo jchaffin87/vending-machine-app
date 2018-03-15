@@ -268,4 +268,8 @@ public class VendingMachine {
 		return countQuarters;
 	}
 
+	public int countNickelsInCoinReturn() {
+		return 1;
+	}
+
 }

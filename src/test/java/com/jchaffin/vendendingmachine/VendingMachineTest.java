@@ -707,4 +707,12 @@ public class VendingMachineTest {
 		assertEquals(2, underTest.countQuartersInCoinReturn());
 	}
 
+	@Test
+	public void countNickelsInCoinReturnReturnsOneWhenOneNickelAcceptedAndReturnCoinsIsRun() {
+		Nickel newNickel = new Nickel();
+		underTest.acceptCoin(newNickel);
+		underTest.returnCoins();
+		assertEquals(1, underTest.countNickelsInCoinReturn());
+	}
+
 }
