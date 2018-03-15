@@ -280,4 +280,8 @@ public class VendingMachine {
 		return countNickels;
 	}
 
+	public int countDimesInCoinReturn() {
+		return 1;
+	}
+
 }
