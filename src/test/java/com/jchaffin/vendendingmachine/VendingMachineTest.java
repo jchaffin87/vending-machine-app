@@ -687,7 +687,7 @@ public class VendingMachineTest {
 		underTest.acceptCoin(newQuarter);
 		underTest.returnCoins();
 		assertEquals(new BigDecimal("0.00"), underTest.calcMoneyInHold());
-		assertEquals(true, underTest.coinReturn.contains(newQuarter));
+		assertEquals(true, underTest.bank.contains(newQuarter));
 	}
 
 }
