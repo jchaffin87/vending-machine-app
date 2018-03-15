@@ -281,7 +281,15 @@ public class VendingMachine {
 	}
 
 	public int countDimesInCoinReturn() {
-		return 1;
+		int countDimes = 0;
+
+		for (Coin coin : coinReturn) {
+			String coinType = idCoin(coin);
+			if (coinType.equals("dime")) {
+				countDimes++;
+			}
+		}
+		return countDimes;
 	}
 
 }

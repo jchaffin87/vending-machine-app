@@ -732,4 +732,13 @@ public class VendingMachineTest {
 		assertEquals(1, underTest.countDimesInCoinReturn());
 	}
 
+	@Test
+	public void countDimesInCoinReturnReturnsTwoWhenTwoDimesAreAcceptedAndReturnCoinsIsRun() {
+		Dime newDime = new Dime();
+		underTest.acceptCoin(newDime);
+		underTest.acceptCoin(newDime);
+		underTest.returnCoins();
+		assertEquals(2, underTest.countDimesInCoinReturn());
+	}
+
 }
