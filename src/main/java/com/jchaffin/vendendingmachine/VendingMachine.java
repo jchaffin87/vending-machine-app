@@ -296,4 +296,17 @@ public class VendingMachine {
 		coinReturn.clear();
 	}
 
+	public Object pickItemFromStock(String chosenType) {
+		Item chosenItem = null;
+
+		for (Item item : stock) {
+			String itemType = item.getType();
+			if (itemType.equals(chosenType)) {
+				chosenItem = item;
+			}
+			break;
+		}
+		return chosenItem;
+	}
+
 }

@@ -751,4 +751,11 @@ public class VendingMachineTest {
 		assertEquals(0, underTest.countDimesInCoinReturn());
 	}
 
+	@Test
+	public void pickItemFromStockReturnsItemInStockOfSpecifiedType() {
+		Chips newChips = new Chips();
+		underTest.stockItem(newChips);
+		assertEquals(newChips, underTest.pickItemFromStock("chips"));
+	}
+
 }
