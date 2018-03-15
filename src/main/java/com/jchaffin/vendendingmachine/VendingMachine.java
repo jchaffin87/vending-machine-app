@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class VendingMachine {
 
-	ArrayList<Coin> coinHold = new ArrayList<Coin>();
-	ArrayList<Coin> coinReturn = new ArrayList<Coin>();
-	ArrayList<Coin> bank = new ArrayList<Coin>();
-	ArrayList<Item> stock = new ArrayList<Item>();
+	private ArrayList<Coin> coinHold = new ArrayList<Coin>();
+	private ArrayList<Coin> coinReturn = new ArrayList<Coin>();
+	private ArrayList<Coin> bank = new ArrayList<Coin>();
+	private ArrayList<Item> stock = new ArrayList<Item>();
 
 	public String idCoin(Coin coin) {
 		if (coin.getSize() == 4 && coin.getWeight() == 4) {
@@ -202,7 +202,7 @@ public class VendingMachine {
 
 	public void returnCoins() {
 		for (Coin coin : coinHold) {
-			bank.add(coin);
+			coinReturn.add(coin);
 		}
 		coinHold.clear();
 	}
