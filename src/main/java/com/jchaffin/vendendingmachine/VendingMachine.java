@@ -257,7 +257,15 @@ public class VendingMachine {
 	}
 
 	public int countQuartersInCoinReturn() {
-		return 1;
+		int countQuarters = 0;
+
+		for (Coin coin : coinReturn) {
+			String coinType = idCoin(coin);
+			if (coinType.equals("quarter")) {
+				countQuarters++;
+			}
+		}
+		return countQuarters;
 	}
 
 }

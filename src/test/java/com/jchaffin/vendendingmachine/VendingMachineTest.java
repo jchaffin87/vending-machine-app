@@ -698,4 +698,13 @@ public class VendingMachineTest {
 		assertEquals(1, underTest.countQuartersInCoinReturn());
 	}
 
+	@Test
+	public void countQuartersInCoinReturnReturnsTwoWhenTwoQuartersAreAcceptedAndReturnCoinsIsRun() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		underTest.returnCoins();
+		assertEquals(2, underTest.countQuartersInCoinReturn());
+	}
+
 }
