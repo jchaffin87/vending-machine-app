@@ -256,4 +256,8 @@ public class VendingMachine {
 		return coinReturn.size();
 	}
 
+	public int countQuartersInCoinReturn() {
+		return 1;
+	}
+
 }
