@@ -708,11 +708,20 @@ public class VendingMachineTest {
 	}
 
 	@Test
-	public void countNickelsInCoinReturnReturnsOneWhenOneNickelAcceptedAndReturnCoinsIsRun() {
+	public void countNickelsInCoinReturnReturnsOneWhenOneNickelIsAcceptedAndReturnCoinsIsRun() {
 		Nickel newNickel = new Nickel();
 		underTest.acceptCoin(newNickel);
 		underTest.returnCoins();
 		assertEquals(1, underTest.countNickelsInCoinReturn());
+	}
+
+	@Test
+	public void countNickelsInCoinReturnReturnsTwoWhenTwoNickelsAreAcceptedAndReturnCoinsIsRun() {
+		Nickel newNickel = new Nickel();
+		underTest.acceptCoin(newNickel);
+		underTest.acceptCoin(newNickel);
+		underTest.returnCoins();
+		assertEquals(2, underTest.countNickelsInCoinReturn());
 	}
 
 }

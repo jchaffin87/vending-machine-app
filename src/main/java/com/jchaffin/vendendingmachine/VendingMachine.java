@@ -269,7 +269,15 @@ public class VendingMachine {
 	}
 
 	public int countNickelsInCoinReturn() {
-		return 1;
+		int countNickels = 0;
+
+		for (Coin coin : coinReturn) {
+			String coinType = idCoin(coin);
+			if (coinType.equals("nickel")) {
+				countNickels++;
+			}
+		}
+		return countNickels;
 	}
 
 }
