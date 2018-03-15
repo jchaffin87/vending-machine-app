@@ -292,4 +292,8 @@ public class VendingMachine {
 		return countDimes;
 	}
 
+	public void emptyCoinReturn() {
+		coinReturn.clear();
+	}
+
 }
