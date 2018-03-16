@@ -742,6 +742,21 @@ public class VendingMachineTest {
 	}
 
 	@Test
+	public void countPenniesInCoinReturnReturnsOneWhenOnePennyIsAccepted() {
+		Penny newPenny = new Penny();
+		underTest.acceptCoin(newPenny);
+		assertEquals(1, underTest.countPenniesInCoinReturn());
+	}
+
+	@Test
+	public void countPenniesInCoinReturnReturnsTwoWhenTwoPenniesAreAccepted() {
+		Penny newPenny = new Penny();
+		underTest.acceptCoin(newPenny);
+		underTest.acceptCoin(newPenny);
+		assertEquals(2, underTest.countPenniesInCoinReturn());
+	}
+
+	@Test
 	public void emptyCoinReturnClearsCoinReturn() {
 		Dime newDime = new Dime();
 		underTest.acceptCoin(newDime);

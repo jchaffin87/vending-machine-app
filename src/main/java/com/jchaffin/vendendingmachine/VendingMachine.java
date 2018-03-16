@@ -103,6 +103,19 @@ public class VendingMachine {
 		stock.remove(item);
 	}
 
+	public Item pickItemFromStock(String chosenType) {
+		Item chosenItem = null;
+
+		for (Item item : stock) {
+			String itemType = item.getType();
+			if (itemType.equals(chosenType)) {
+				chosenItem = item;
+				break;
+			}
+		}
+		return chosenItem;
+	}
+
 	public void bankCoins() {
 		for (Coin coin : coinHold) {
 			bank.add(coin);
@@ -292,21 +305,20 @@ public class VendingMachine {
 		return countDimes;
 	}
 
-	public void emptyCoinReturn() {
-		coinReturn.clear();
+	public int countPenniesInCoinReturn() {
+		int countPennies = 0;
+
+		for (Coin coin : coinReturn) {
+			String coinType = idCoin(coin);
+			if (coinType.equals("penny")) {
+				countPennies++;
+			}
+		}
+		return countPennies;
 	}
 
-	public Object pickItemFromStock(String chosenType) {
-		Item chosenItem = null;
-
-		for (Item item : stock) {
-			String itemType = item.getType();
-			if (itemType.equals(chosenType)) {
-				chosenItem = item;
-			}
-			break;
-		}
-		return chosenItem;
+	public void emptyCoinReturn() {
+		coinReturn.clear();
 	}
 
 }

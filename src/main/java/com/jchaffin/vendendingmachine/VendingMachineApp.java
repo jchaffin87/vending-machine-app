@@ -84,86 +84,55 @@ public class VendingMachineApp {
 			} else if (userResponse.equalsIgnoreCase("R")) {
 				myMachine.returnCoins();
 			} else if (userResponse.equalsIgnoreCase("T")) {
-				int countQs = 0;
-				int countNs = 0;
-				int countDs = 0;
-				int countPs = 0;
-				for (Coin coin : myMachine.coinReturn) {
-					String coinType = myMachine.idCoin(coin);
-					if (coinType.equals("quarter")) {
-						countQs++;
-					}
-					if (coinType.equals("nickel")) {
-						countNs++;
-					}
-					if (coinType.equals("dime")) {
-						countDs++;
-					}
-					if (coinType.equals("penny")) {
-						countPs++;
-					}
-				}
-				System.out.println(countQs + " quarters taken.");
-				System.out.println(countNs + " nickels taken.");
-				System.out.println(countDs + " dimes taken.");
-				System.out.println(countPs + " pennies taken.");
-				myMachine.coinReturn.clear();
+				System.out.println(myMachine.countQuartersInCoinReturn() + " quarters taken.");
+				System.out.println(myMachine.countNickelsInCoinReturn() + " nickels taken.");
+				System.out.println(myMachine.countDimesInCoinReturn() + " dimes taken.");
+				System.out.println(myMachine.countPenniesInCoinReturn() + " pennies taken.");
+				myMachine.emptyCoinReturn();
 			} else if (userResponse.equalsIgnoreCase("1")) {
-				boolean colaInStock = myMachine.checkStock("cola");
+				boolean colaInStock = myMachine.checkStockForItemType("cola");
+				Item chosenItem = myMachine.pickItemFromStock("cola");
 				if (colaInStock) {
-					for (Item item : myMachine.stock) {
-						if (item.getType().equals("cola")) {
-							boolean sufficientFunds = myMachine.checkSufficientFunds(item);
-							if (sufficientFunds) {
-								myMachine.dispenseItem(item);
-								myMachine.returnChange(item);
-								myMachine.bankCoins();
-								System.out.println("Cola dispensed.");
-							} else {
-								System.out.println("$" + item.getPrice());
-							}
-							break;
-						}
+					boolean sufficientFunds = myMachine.checkSufficientFunds(chosenItem);
+					if (sufficientFunds) {
+						myMachine.dispenseItem(chosenItem);
+						myMachine.returnChange(chosenItem);
+						myMachine.bankCoins();
+						System.out.println("Cola dispensed.");
+					} else {
+						System.out.println("$" + chosenItem.getPrice());
 					}
 				} else {
 					System.out.println("SOLD OUT");
 				}
 			} else if (userResponse.equalsIgnoreCase("2")) {
-				boolean chipsInStock = myMachine.checkStock("chips");
+				boolean chipsInStock = myMachine.checkStockForItemType("chips");
+				Item chosenItem = myMachine.pickItemFromStock("chips");
 				if (chipsInStock) {
-					for (Item item : myMachine.stock) {
-						if (item.getType().equals("chips")) {
-							boolean sufficientFunds = myMachine.checkSufficientFunds(item);
-							if (sufficientFunds) {
-								myMachine.dispenseItem(item);
-								myMachine.returnChange(item);
-								myMachine.bankCoins();
-								System.out.println("Chips dispensed.");
-							} else {
-								System.out.println("$" + item.getPrice());
-							}
-							break;
-						}
+					boolean sufficientFunds = myMachine.checkSufficientFunds(chosenItem);
+					if (sufficientFunds) {
+						myMachine.dispenseItem(chosenItem);
+						myMachine.returnChange(chosenItem);
+						myMachine.bankCoins();
+						System.out.println("Chips dispensed.");
+					} else {
+						System.out.println("$" + chosenItem.getPrice());
 					}
 				} else {
 					System.out.println("SOLD OUT");
 				}
 			} else if (userResponse.equalsIgnoreCase("3")) {
-				boolean candyInStock = myMachine.checkStock("candy");
+				boolean candyInStock = myMachine.checkStockForItemType("candy");
+				Item chosenItem = myMachine.pickItemFromStock("candy");
 				if (candyInStock) {
-					for (Item item : myMachine.stock) {
-						if (item.getType().equals("candy")) {
-							boolean sufficientFunds = myMachine.checkSufficientFunds(item);
-							if (sufficientFunds) {
-								myMachine.dispenseItem(item);
-								myMachine.returnChange(item);
-								myMachine.bankCoins();
-								System.out.println("Candy dispensed.");
-							} else {
-								System.out.println("$" + item.getPrice());
-							}
-							break;
-						}
+					boolean sufficientFunds = myMachine.checkSufficientFunds(chosenItem);
+					if (sufficientFunds) {
+						myMachine.dispenseItem(chosenItem);
+						myMachine.returnChange(chosenItem);
+						myMachine.bankCoins();
+						System.out.println("Candy dispensed.");
+					} else {
+						System.out.println("$" + chosenItem.getPrice());
 					}
 				} else {
 					System.out.println("SOLD OUT");
