@@ -46,7 +46,6 @@ public class VendingMachineApp {
 		while (1 < 2) {
 
 			System.out.println("This machine sells Cola for $1.00, Chips for $0.50, and Candy for $0.65.");
-			System.out.println("Press C to check the display.");
 			System.out.println("Press Q to insert a quarter.");
 			System.out.println("Press N to insert a nickel.");
 			System.out.println("Press D to insert a dime.");
@@ -57,19 +56,19 @@ public class VendingMachineApp {
 			System.out.println("Press 2 to choose Chips.");
 			System.out.println("Press 3 to choose Candy.");
 
+			BigDecimal moneyInserted = myMachine.calcMoneyInHold();
+			boolean exactChangeNeeded = myMachine.checkExactChangeNeeded();
+			if (moneyInserted.equals(new BigDecimal("0.00")) && exactChangeNeeded) {
+				System.out.println("EXACT CHANGE ONLY");
+			} else if (moneyInserted.equals(new BigDecimal("0.00"))) {
+				System.out.println("INSERT COIN");
+			} else {
+				System.out.println("$" + moneyInserted);
+			}
+
 			userResponse = input.next();
 
-			if (userResponse.equalsIgnoreCase("C")) {
-				BigDecimal moneyInserted = myMachine.calcMoneyInHold();
-				boolean exactChangeNeeded = myMachine.checkExactChangeNeeded();
-				if (moneyInserted.equals(new BigDecimal("0.00")) && exactChangeNeeded) {
-					System.out.println("EXACT CHANGE ONLY");
-				} else if (moneyInserted.equals(new BigDecimal("0.00"))) {
-					System.out.println("INSERT COIN");
-				} else {
-					System.out.println("$" + moneyInserted);
-				}
-			} else if (userResponse.equalsIgnoreCase("Q")) {
+			if (userResponse.equalsIgnoreCase("Q")) {
 				Quarter userQuarter = new Quarter();
 				myMachine.acceptCoin(userQuarter);
 			} else if (userResponse.equalsIgnoreCase("N")) {

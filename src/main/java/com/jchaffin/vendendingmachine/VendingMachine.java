@@ -144,9 +144,7 @@ public class VendingMachine {
 
 	public int calcNumOfQuartersInChange(Item chosenItem) {
 		int numOfQsInChange = (int) (makeChange(chosenItem).doubleValue() / 0.25);
-		return numOfQsInChange;// I think the problem here is the div to int value thing rounding up to one.
-								// change makeChange to a double and do regular math? gotta figure out how to
-								// round down
+		return numOfQsInChange;
 
 	}
 
