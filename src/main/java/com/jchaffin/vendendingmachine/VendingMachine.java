@@ -142,33 +142,36 @@ public class VendingMachine {
 		return change;
 	}
 
-	public BigDecimal calcNumOfQsInChange(Item chosenItem) {
-		BigDecimal numOfQsInChange = makeChange(chosenItem).divideToIntegralValue(new BigDecimal("0.25"));
-		return numOfQsInChange;
+	public int calcNumOfQuartersInChange(Item chosenItem) {
+		int numOfQsInChange = (int) (makeChange(chosenItem).doubleValue() / 0.25);
+		return numOfQsInChange;// I think the problem here is the div to int value thing rounding up to one.
+								// change makeChange to a double and do regular math? gotta figure out how to
+								// round down
+
 	}
 
-	public BigDecimal calcNumOfDsInChange(Item chosenItem) {
+	public int calcNumOfDimesInChange(Item chosenItem) {
 		BigDecimal changeMinusQuarters = makeChange(chosenItem)
-				.subtract(calcNumOfQsInChange(chosenItem).multiply(new BigDecimal("0.25")));
-		BigDecimal numOfDsInChange = changeMinusQuarters.divideToIntegralValue(new BigDecimal("0.10"));
+				.subtract(new BigDecimal(calcNumOfQuartersInChange(chosenItem)).multiply(new BigDecimal("0.25")));
+		int numOfDsInChange = (int) (changeMinusQuarters.doubleValue() / 0.10);
 		return numOfDsInChange;
 	}
 
-	public BigDecimal calcNumOfNsInChange(Item chosenItem) {
+	public int calcNumOfNickelsInChange(Item chosenItem) {
 		BigDecimal changeMinusQuarters = makeChange(chosenItem)
-				.subtract(calcNumOfQsInChange(chosenItem).multiply(new BigDecimal("0.25")));
+				.subtract(new BigDecimal(calcNumOfQuartersInChange(chosenItem)).multiply(new BigDecimal("0.25")));
 		BigDecimal changeMinusQuartersAndDimes = changeMinusQuarters
-				.subtract(calcNumOfDsInChange(chosenItem).multiply(new BigDecimal("0.10")));
-		BigDecimal numOfNsInChange = changeMinusQuartersAndDimes.divideToIntegralValue(new BigDecimal("0.05"));
+				.subtract(new BigDecimal(calcNumOfDimesInChange(chosenItem)).multiply(new BigDecimal("0.10")));
+		int numOfNsInChange = (int) (changeMinusQuartersAndDimes.doubleValue() / 0.05);
 		return numOfNsInChange;
 	}
 
 	public void returnChange(Item chosenItem) {
-		BigDecimal numOfQuartersInChange = calcNumOfQsInChange(chosenItem);
-		BigDecimal numOfDimesInChange = calcNumOfDsInChange(chosenItem);
-		BigDecimal numOfNickelsInChange = calcNumOfNsInChange(chosenItem);
+		int numOfQuartersInChange = calcNumOfQuartersInChange(chosenItem);
+		int numOfDimesInChange = calcNumOfDimesInChange(chosenItem);
+		int numOfNickelsInChange = calcNumOfNickelsInChange(chosenItem);
 
-		for (int i = 0; i <= numOfQuartersInChange.intValue(); i++) {
+		for (int i = 0; i <= numOfQuartersInChange - 1; i++) {
 			for (Coin coin : bank) {
 				String coinType = idCoin(coin);
 				if (coinType.equals("quarter")) {
@@ -178,7 +181,7 @@ public class VendingMachine {
 				}
 			}
 		}
-		for (int i = 0; i <= numOfDimesInChange.intValue(); i++) {
+		for (int i = 0; i <= numOfDimesInChange - 1; i++) {
 			for (Coin coin : bank) {
 				String coinType = idCoin(coin);
 				if (coinType.equals("dime")) {
@@ -188,7 +191,7 @@ public class VendingMachine {
 				}
 			}
 		}
-		for (int i = 0; i <= numOfNickelsInChange.intValue(); i++) {
+		for (int i = 0; i <= numOfNickelsInChange - 1; i++) {
 			for (Coin coin : bank) {
 				String coinType = idCoin(coin);
 				if (coinType.equals("nickel")) {

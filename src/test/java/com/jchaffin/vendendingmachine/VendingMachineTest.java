@@ -278,28 +278,28 @@ public class VendingMachineTest {
 	}
 
 	@Test
-	public void calcNumOfQsInChangeReturnsOneWhenChangeEqualsZeroPointTwoFive() {
+	public void calcNumOfQuartersInChangeReturnsOneWhenChangeEqualsZeroPointTwoFive() {
 		Quarter newQuarter = new Quarter();
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
 		Chips newChips = new Chips();
-		assertEquals(new BigDecimal("1"), underTest.calcNumOfQsInChange(newChips));
+		assertEquals(1, underTest.calcNumOfQuartersInChange(newChips));
 	}
 
 	@Test
-	public void calcNumOfQsInChangeReturnsTwoWhenChangeEqualsZeroPointFiveZero() {
+	public void calcNumOfQuartersInChangeReturnsTwoWhenChangeEqualsZeroPointFiveZero() {
 		Quarter newQuarter = new Quarter();
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
 		Chips newChips = new Chips();
-		assertEquals(new BigDecimal("2"), underTest.calcNumOfQsInChange(newChips));
+		assertEquals(2, underTest.calcNumOfQuartersInChange(newChips));
 	}
 
 	@Test
-	public void calcNumOfQsInChangeReturnsThreeWhenChangeEqualsZeroPointSevenFive() {
+	public void calcNumOfQuartersInChangeReturnsThreeWhenChangeEqualsZeroPointSevenFive() {
 		Quarter newQuarter = new Quarter();
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
@@ -307,11 +307,11 @@ public class VendingMachineTest {
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
 		Chips newChips = new Chips();
-		assertEquals(new BigDecimal("3"), underTest.calcNumOfQsInChange(newChips));
+		assertEquals(3, underTest.calcNumOfQuartersInChange(newChips));
 	}
 
 	@Test
-	public void calcNumOfQsInChangeReturnsThreeWhenChangeEqualsZeroPointNineZero() {
+	public void calcNumOfQuartersInChangeReturnsThreeWhenChangeEqualsZeroPointNineZero() {
 		Quarter newQuarter = new Quarter();
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
@@ -323,33 +323,33 @@ public class VendingMachineTest {
 		Nickel newNickel = new Nickel();
 		underTest.acceptCoin(newNickel);
 		Chips newChips = new Chips();
-		assertEquals(new BigDecimal("3"), underTest.calcNumOfQsInChange(newChips));
+		assertEquals(3, underTest.calcNumOfQuartersInChange(newChips));
 	}
 
 	@Test
-	public void calcNumOfQsInChangeReturnsZeroWhenChangeEqualsZeroPointOneZero() {
+	public void calcNumOfQuartersInChangeReturnsZeroWhenChangeEqualsZeroPointOneZero() {
 		Quarter newQuarter = new Quarter();
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
 		Dime newDime = new Dime();
 		underTest.acceptCoin(newDime);
 		Chips newChips = new Chips();
-		assertEquals(new BigDecimal("0"), underTest.calcNumOfQsInChange(newChips));
+		assertEquals(0, underTest.calcNumOfQuartersInChange(newChips));
 	}
 
 	@Test
-	public void calcNumOfDsInChangeReturnsOneWhenChangeEqualsZeroPointOneZero() {
+	public void calcNumOfDimesInChangeReturnsOneWhenChangeEqualsZeroPointOneZero() {
 		Quarter newQuarter = new Quarter();
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
 		Dime newDime = new Dime();
 		underTest.acceptCoin(newDime);
 		Chips newChips = new Chips();
-		assertEquals(new BigDecimal("1"), underTest.calcNumOfDsInChange(newChips));
+		assertEquals(1, underTest.calcNumOfDimesInChange(newChips));
 	}
 
 	@Test
-	public void calcNumOfDsInChangeReturnsTwoWhenChangeEqualsZeroPointTwoZero() {
+	public void calcNumOfDimesInChangeReturnsTwoWhenChangeEqualsZeroPointTwoZero() {
 		Quarter newQuarter = new Quarter();
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
@@ -357,70 +357,11 @@ public class VendingMachineTest {
 		underTest.acceptCoin(newDime);
 		underTest.acceptCoin(newDime);
 		Chips newChips = new Chips();
-		assertEquals(new BigDecimal("2"), underTest.calcNumOfDsInChange(newChips));
+		assertEquals(2, underTest.calcNumOfDimesInChange(newChips));
 	}
 
 	@Test
-	public void calcNumOfDsInChangeReturnsOneWhenChangeEqualsZeroPointThreeFive() {
-		Quarter newQuarter = new Quarter();
-		underTest.acceptCoin(newQuarter);
-		underTest.acceptCoin(newQuarter);
-		underTest.acceptCoin(newQuarter);
-		Dime newDime = new Dime();
-		underTest.acceptCoin(newDime);
-		Chips newChips = new Chips();
-		assertEquals(new BigDecimal("1"), underTest.calcNumOfDsInChange(newChips));
-	}
-
-	@Test
-	public void calcNumOfDsInChangeReturnsOneWhenChangeEqualsZeroPointSixFive() {
-		Quarter newQuarter = new Quarter();
-		underTest.acceptCoin(newQuarter);
-		underTest.acceptCoin(newQuarter);
-		underTest.acceptCoin(newQuarter);
-		underTest.acceptCoin(newQuarter);
-		Dime newDime = new Dime();
-		underTest.acceptCoin(newDime);
-		Nickel newNickel = new Nickel();
-		underTest.acceptCoin(newNickel);
-		Chips newChips = new Chips();
-		assertEquals(new BigDecimal("1"), underTest.calcNumOfDsInChange(newChips));
-	}
-
-	@Test
-	public void calcNumOfDsInChangeReturnsZeroWhenChangeEqualsZeroPointZeroFive() {
-		Quarter newQuarter = new Quarter();
-		underTest.acceptCoin(newQuarter);
-		underTest.acceptCoin(newQuarter);
-		Nickel newNickel = new Nickel();
-		underTest.acceptCoin(newNickel);
-		Chips newChips = new Chips();
-		assertEquals(new BigDecimal("0"), underTest.calcNumOfDsInChange(newChips));
-	}
-
-	@Test
-	public void calcNumOfNsInChangeReturnsOneWhenChangeEqualsZeroPointZeroFive() {
-		Quarter newQuarter = new Quarter();
-		underTest.acceptCoin(newQuarter);
-		underTest.acceptCoin(newQuarter);
-		Nickel newNickel = new Nickel();
-		underTest.acceptCoin(newNickel);
-		Chips newChips = new Chips();
-		assertEquals(new BigDecimal("1"), underTest.calcNumOfNsInChange(newChips));
-	}
-
-	@Test
-	public void calcNumOfNsInChangeReturnsZeroWhenChangeEqualsZeroPointTwoFive() {
-		Quarter newQuarter = new Quarter();
-		underTest.acceptCoin(newQuarter);
-		underTest.acceptCoin(newQuarter);
-		underTest.acceptCoin(newQuarter);
-		Chips newChips = new Chips();
-		assertEquals(new BigDecimal("0"), underTest.calcNumOfNsInChange(newChips));
-	}
-
-	@Test
-	public void calcNumOfNsInChangeReturnsZeroWhenChangeEqualsZeroPointThreeFive() {
+	public void calcNumOfDimesInChangeReturnsOneWhenChangeEqualsZeroPointThreeFive() {
 		Quarter newQuarter = new Quarter();
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
@@ -428,12 +369,14 @@ public class VendingMachineTest {
 		Dime newDime = new Dime();
 		underTest.acceptCoin(newDime);
 		Chips newChips = new Chips();
-		assertEquals(new BigDecimal("0"), underTest.calcNumOfNsInChange(newChips));
+		assertEquals(1, underTest.calcNumOfDimesInChange(newChips));
 	}
 
 	@Test
-	public void calcNumOfNsInChangeReturnsOneWhenChangeEqualsZeroPointOneFive() {
+	public void calcNumOfDimesInChangeReturnsOneWhenChangeEqualsZeroPointSixFive() {
 		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
 		underTest.acceptCoin(newQuarter);
 		Dime newDime = new Dime();
@@ -441,7 +384,64 @@ public class VendingMachineTest {
 		Nickel newNickel = new Nickel();
 		underTest.acceptCoin(newNickel);
 		Chips newChips = new Chips();
-		assertEquals(new BigDecimal("1"), underTest.calcNumOfNsInChange(newChips));
+		assertEquals(1, underTest.calcNumOfDimesInChange(newChips));
+	}
+
+	@Test
+	public void calcNumOfDimesInChangeReturnsZeroWhenChangeEqualsZeroPointZeroFive() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		Nickel newNickel = new Nickel();
+		underTest.acceptCoin(newNickel);
+		Chips newChips = new Chips();
+		assertEquals(0, underTest.calcNumOfDimesInChange(newChips));
+	}
+
+	@Test
+	public void calcNumOfNickelsInChangeReturnsOneWhenChangeEqualsZeroPointZeroFive() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		Nickel newNickel = new Nickel();
+		underTest.acceptCoin(newNickel);
+		Chips newChips = new Chips();
+		assertEquals(1, underTest.calcNumOfNickelsInChange(newChips));
+	}
+
+	@Test
+	public void calcNumOfNickelsInChangeReturnsZeroWhenChangeEqualsZeroPointTwoFive() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		Chips newChips = new Chips();
+		assertEquals(0, underTest.calcNumOfNickelsInChange(newChips));
+	}
+
+	@Test
+	public void calcNumOfNickelsInChangeReturnsZeroWhenChangeEqualsZeroPointThreeFive() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		Dime newDime = new Dime();
+		underTest.acceptCoin(newDime);
+		Chips newChips = new Chips();
+		assertEquals(0, underTest.calcNumOfNickelsInChange(newChips));
+	}
+
+	@Test
+	public void calcNumOfNickelsInChangeReturnsOneWhenChangeEqualsZeroPointOneFive() {
+		Quarter newQuarter = new Quarter();
+		underTest.acceptCoin(newQuarter);
+		underTest.acceptCoin(newQuarter);
+		Dime newDime = new Dime();
+		underTest.acceptCoin(newDime);
+		Nickel newNickel = new Nickel();
+		underTest.acceptCoin(newNickel);
+		Chips newChips = new Chips();
+		assertEquals(1, underTest.calcNumOfNickelsInChange(newChips));
 	}
 
 	@Test
